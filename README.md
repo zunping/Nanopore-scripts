@@ -9,4 +9,4 @@ To apply the missingness filter, we run the following command:
 
 ```python filter_missingness_vcf.py -i merged_vcf.snps.vcf -o merged_vcf.snps.miss40.vcf -m 0.4```
 
-This command will remove the SNPs with more than 0.4 missingness value. If there are five samples in total and three samples have `./.` for a certain SNP, then the missingness value is 0.6 and this SNP will be removed from the final output file. 
+This command will remove the SNPs with more than 0.4 missingness value and save the output to `merged_vcf.snps.miss40.vcf` . If there are five samples in total and three samples have `./.` for a certain SNP, then the missingness value is 0.6 and this SNP will be removed from the final output file. 
