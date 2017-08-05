@@ -8,7 +8,7 @@ First we combine several vcf files into one file by using GATK.
 ```java -jar GenomeAnalysisTK.jar -R 3D7_v25.fasta -T CombineVariants  --variant sample1.vcf --variant sample2.vcf --variant sample3.vcf --variant sample4.vcf --variant sample5.vcf -o merged_vcf.vcf -genotypeMergeOptions REQUIRE_UNIQUE ```
 
 ### Remove INDELs and Refinall
-Then we remove positions with `ReferenceInAll` or `INDEL` by using the following command:
+Then we remove positions with `ReferenceInAll` or `INDEL` using the following command:
 ```cat merged_vcf.vcf | grep -Ev "ReferenceInAll|INDEL" >merged_vcf.snps.vcf```
 
 ### Missingness filter
