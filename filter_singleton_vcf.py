@@ -1,3 +1,5 @@
+## This script removes singletons from a merged vcf file
+## it only accepts homozygous SNPs (0/0, 1/1)
 import optparse
 import re
 
@@ -8,16 +10,16 @@ def filter_singleton(infile,outfile):
 	
 	vcf_outfile = open(outfile,'w')
 	for i in lines:
-		if i.startswith("#"):
+		if i.startswith("#"):#comment lines
 			vcf_outfile.write(i)
 		else:
 			singleton_counts = re.findall("1/1",i)
-			if len(singleton_counts) != 1:
+			if len(singleton_counts) != 1:#if it's not singleton
 				vcf_outfile.write(i)
 	vcf_outfile.close()	
 
 def main(infile,outfile):
-	print "running main function"
+	print("running main function")
 	filter_singleton(infile,outfile)
  					
 if __name__== '__main__':
