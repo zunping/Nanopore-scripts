@@ -1,5 +1,5 @@
 ## provide a merged vcf files. The script generates a new merged
-## vcf file that passes the missingness cutoff.
+## vcf file that passes the missingness filter.
 
 import optparse
 
