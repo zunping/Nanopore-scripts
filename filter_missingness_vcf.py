@@ -10,18 +10,18 @@ def filter_missingness(infile,outfile,missvalue):
 	
 	vcf_outfile = open(outfile,'w')
 	for i in lines:
-		if i.startswith("#"):
+		if i.startswith("#"):#comment lines
 			vcf_outfile.write(i)
 		else:
 			col = i.strip().split()
 			isolate_total = len(col) - 9 #total number of isolates
-			isolate_missing = col.count("./.")
-			missingness = float(isolate_missing)/isolate_total
+			isolate_missing = col.count("./.")#counts total no. of missing data
+			missingness = float(isolate_missing)/isolate_total#calculates missingness value
 			print ("missingness is ... " + str(missingness))
-			if missingness <= float(missvalue):
+			if missingness <= float(missvalue):#passes the filter
 				print ("passed the filter")
 				vcf_outfile.write(i)
-			else:
+			else:#missingness value is greater than cutoff
 				print ("didn't pass the filter")
 	vcf_outfile.close()	
 
@@ -53,7 +53,6 @@ if __name__== '__main__':
 	(options , args) = parser.parse_args()
     
     	# process the inputs
-    	# note: all commandline inputs are str by default
 	infile = options.infile
 	outfile = options.outfile
 	missvalue = options.missvalue
