@@ -1,2 +1,1 @@
-# Nanopore-scripts
-# Nanopore-scripts
+# ONT scripts
