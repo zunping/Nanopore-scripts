@@ -1,3 +1,6 @@
+## provide a merged vcf files. The script generates a new merged
+## vcf file that passes the missingnes cutoff.
+
 import optparse
 
 def filter_missingness(infile,outfile,missvalue):
@@ -15,17 +18,16 @@ def filter_missingness(infile,outfile,missvalue):
 			isolate_total = len(col) - 9 #total number of isolates
 			isolate_missing = col.count("./.")
 			missingness = float(isolate_missing)/isolate_total
-			print "missingness is ... " + str(missingness) 
 			if missingness <= float(missvalue):
-				print "pass filter"
+				print("pass filter")
 				vcf_outfile.write(i)
 			else:
-				print "fail filter"
+				print("fail filter")
 	vcf_outfile.close()	
 
 def main(infile,outfile,unique):
-	print "running main function"
-	print "missingness cutoff is ... " + str(missvalue)
+	print("running main function")
+	print("missingness cutoff is ... " + str(missvalue))
 	filter_missingness(infile,outfile,missvalue)
  					
 if __name__== '__main__':
@@ -42,9 +44,9 @@ if __name__== '__main__':
 	
 	parser.add_option( "-o", dest = "outfile",
                 default = "",
-                help = "name the output .vcf file which pass the \
-			missingnes filter" )
-	parser.add_option("-m", dest = "missvalue", 
+                help = "name the output .vcf file which passes the \
+			missingness filter" )
+	parser.add_option("-m", dest = "missvalue", type="float",
 		help = "the missingness cutoff: from 0 to 1")
 	
     	# load the inputs
