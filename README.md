@@ -1,6 +1,19 @@
 # ONT scripts
 Scripts for population genetic analysis using Oxford Nanopore sequencing data.
 
+## SNPs concordance analysis example
+#### Calling SNPs via BCFtools
+We first use SAMtools and BCFtools to call SNPs from Nanopore data. For Illumina reads, SNPs are called in the same way.
+
+```samtools mpileup -g -f Pvivax_Salvador_I.fasta sample1.ont.sorted.bam >sample1.ont.sorted.bcf```
+```bcftools call -A -m sample1.ont.sorted.bcf >sample1.ont.sorted.Am.vcf```
+
+#### Quality filtering
+SNPs are then filtered based on ```QUAL``` value and indels are removed.
+
+```bcftools view -i "%QUAL>20" sample1.ont.sorted.Am.vcf -o sample1.ont.sorted.Am.q20.vcf```
+```cat sample1.ont.sorted.Am.q20.vcf | grep -v "INDEL" >sample1.ont.sorted.Am.q20.snps.vcf```
+
 ## Variant calling analysis example
 #### Merge multiple vcf files
 First we combine several vcf files into one file by using GATK.
