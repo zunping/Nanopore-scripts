@@ -5,7 +5,7 @@ Scripts for population genetic analysis using Oxford Nanopore sequencing data.
 #### Calling SNPs via BCFtools
 We first use SAMtools and BCFtools to call SNPs from Nanopore data. For Illumina reads, SNPs are called in the same way.
 
-```samtools mpileup -g -f Pvivax_Salvador_I.fasta sample1.ont.sorted.bam >sample1.ont.sorted.bcf<br />
+```samtools mpileup -g -f Pvivax_Salvador_I.fasta sample1.ont.sorted.bam >sample1.ont.sorted.bcf
 bcftools call -A -m sample1.ont.sorted.bcf >sample1.ont.sorted.Am.vcf```
 
 #### Quality filtering
