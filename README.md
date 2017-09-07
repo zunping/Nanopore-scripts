@@ -42,7 +42,7 @@ The output `sample1.sorted.Am.q20.snps.dp4_1.concor.txt` contains SNPs' position
 python nanopore_precision_npv.py -i sample1.sorted.Am.q20.snps.dp4_1.concor.txt -n sample1.npv.txt -p sample1.precision.txt -f sample1.freq.txt
 ```
 
-## Variant calling analysis example
+## Pop gen analysis example
 #### Merge multiple vcf files
 First we combine several vcf files into one file by using GATK.
 
