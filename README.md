@@ -9,10 +9,16 @@ We first use SAMtools and BCFtools to call SNPs from Nanopore data. For Illumina
 ```bcftools call -A -m sample1.ont.sorted.bcf >sample1.ont.sorted.Am.vcf```
 
 #### Quality filtering
-SNPs are then filtered based on ```QUAL``` value and indels are removed.
+SNPs are then filtered based on ```QUAL``` and ```DP4``` values. Indels are removed.
 
 ```bcftools view -i "%QUAL>20" sample1.ont.sorted.Am.vcf -o sample1.ont.sorted.Am.q20.vcf```<br />
 ```cat sample1.ont.sorted.Am.q20.vcf | grep -v "INDEL" >sample1.ont.sorted.Am.q20.snps.vcf```
+```python filter_bcftools_dp4.py -i sample1.ont.sorted.Am.q20.snps.vcf -o sample1.ont.sorted.Am.q20.snps.dp4_1.vcf```
+
+#### SNP caller concordance
+We now can evaluate SNP concordance between Oxford Nanopore and Illumina runs. SNPs identified from Illumina reads are used as ground truth. 
+
+```python nanoporeSNPCaller_concordance.py -i sample1.iln.sorted.sorted.snps.vcf -n sample1.ont.sorted.Am.q20.snps.dp4_1.vcf -o sample1.sorted.Am.q20.snps.dp4_1.concor.txt -b -c bcftools```
 
 ## Variant calling analysis example
 #### Merge multiple vcf files
