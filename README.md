@@ -71,3 +71,8 @@ We can then remove singletons.
 python filter_singleton_vcf.py -i merged_vcf.snps.miss40.vcf -o merged_vcf.snps.miss40.nosingletons.vcf
 ```
 
+#### Prepare input fasta file for phylogenetic analysis
+We then convert the merged vcf to a fasta file using the following command. The fasta file can then be converted to PHYLIP format and used as an input for RaxML.
+```
+python concat_variants.py -i merged_vcf.snps.miss40.nosingletons.vcf -o merged_vcf.snps.miss40.nosingletons.fasta
+```
