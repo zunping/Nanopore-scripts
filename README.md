@@ -1,5 +1,5 @@
 # ONT scripts
-Scripts for population genetic analysis using Oxford Nanopore sequencing data.
+Code for analysis of Oxford Nanopore MinION sequencing data. Although Oxford Nanopore's MinION platform generates longer reads compared to short read Illumina or Ion sequencing, the error rates of ONT are considerably higher (~10%). To eliminate false positive SNPs from MinION reads, the scripts can filter SNPs based on several criteria and calculate concordance level (i.e precision, negative predictive value) by comparing MinION SNPs against Illumina data. To evaluate population struture from MinION sequencing experiments, the scripts can filter a merged vcf file and then convert it to a fasta file, which can be subsequently used to construct a phylogenetic tree.
 
 ## SNPs concordance analysis example
 #### Calling SNPs via BCFtools
